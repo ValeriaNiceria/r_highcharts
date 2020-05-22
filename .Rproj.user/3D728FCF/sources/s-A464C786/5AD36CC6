@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3700566978",
+    "hash" : "0",
     "id" : "5AD36CC6",
-    "lastKnownWriteTime" : 1590174997,
-    "last_content_update" : 1590174997,
+    "lastKnownWriteTime" : 1590177145,
+    "last_content_update" : 1590177145946,
     "path" : "C:/Users/DataTlker02/Desktop/r_highcharts/_bookdown.yml",
     "project_path" : "_bookdown.yml",
     "properties" : {
+        "cursorPosition" : "4,5",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

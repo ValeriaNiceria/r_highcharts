@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590184399188.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "314E85C6",
+    "lastKnownWriteTime" : 1590184480,
+    "last_content_update" : 1590184480128,
+    "path" : "C:/Users/DataTlker02/Desktop/r_highcharts/funcoes.R",
+    "project_path" : "funcoes.R",
+    "properties" : {
+        "cursorPosition" : "8,14",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
