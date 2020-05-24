@@ -91,6 +91,8 @@ hchart(
 
 ```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
 
+h4(style="font-weight: bold;", "Tabela com os dados utilizados:")
+
 kable(dados, align = "c", row.names = FALSE, digits = 3) %>%
   kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), font_size = 11)
 
