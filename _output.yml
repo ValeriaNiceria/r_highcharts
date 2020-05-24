@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./" style="color: #c5c5c5;">Exemplos Highcharts em R</a></li>
+        <li><a href="./" style="color: #034980;text-align:center; font-size: 15px;">Exemplos Highcharts em R</a></li>
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

@@ -26,8 +26,8 @@ h1 {
 
 h2 {
   color: black;
-  text-transform: uppercase;
   text-shadow: 1px 1px 0.6px black;
+  font-size: 11px;
 }
 
 .titulo_bookdown {
@@ -42,6 +42,24 @@ li.chapter > a >b {
 }
 
 ul.summary {
-    background-color: #002744;
     font-weight: bold;
 }
+
+
+.book-header > a.btn[aria-label="Search"],
+.book-header > a.btn[aria-label="Information about the toolbar"],
+.book-header > a.btn[aria-label="Twitter"],
+.book-header > a.btn[aria-label="Facebook"] {
+    display: none;
+}
+
+.book-header > .dropdown > a.btn[aria-label="Share"] {
+    display: none;
+}
+
+.book .book-summary ul.summary li a:hover, .book .book-summary ul.summary li.active > a {
+    color: #015394;
+    background: 0 0;
+    text-decoration: none;
+}
+

@@ -1,0 +1,97 @@
+# Gráfico - Area
+
+```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
+
+library(tidyverse)
+library(highcharter)
+library(shiny)
+library(zoo)
+library(knitr)
+library(kableExtra)
+
+
+dados_grupo1 <- data.frame(
+  grupo = "Grupo 1",
+  date = as.yearmon(as.Date(paste("2020", seq_len(12), "01", sep = "-"))),
+  value = c(10, 10, 50, 100, 70, 120, 100, 50, 20, 30, 10, 22),
+  color = "#d35400"
+)
+
+dados_grupo2 <- data.frame(
+  grupo = "Grupo 2", 
+  date = as.yearmon(as.Date(paste("2020", seq_len(12), "01", sep = "-"))),
+  value = c(100, 50, 20, 30, 10, 40, 10, 10, 50, 100, 70, 120),
+  color = "#2980b9"
+)
+
+dados <- rbind(dados_grupo1, dados_grupo2)
+
+fluidPage(
+  fluidRow(
+    column = 12,
+    
+    hchart(
+      dados, "area", 
+      hcaes(
+        x = as.character(date), 
+        y = value, 
+        group = grupo, 
+        color = color
+      )
+    ) %>% 
+      hc_plotOptions(
+        area = list(
+          dataLabels = list(
+            enabled = TRUE, 
+            format = '{y:.,0f}'
+          )
+        )
+      ) %>%
+      hc_yAxis(title = list(text = "Valores")) %>% 
+      hc_xAxis(title = list(text = "Meses")) %>% 
+      hc_title(text = "Gráfico Exemplo") %>% 
+      hc_colors(as.character(unique(dados$color)))
+    
+  )
+)
+
+```
+
+```R
+# Carregando os pacotes
+library(tidyverse)
+library(highcharter)
+
+# Criando o gráfico
+hchart(
+  dados,
+  "area",
+  hcaes(
+    x = as.character(date), 
+    y = value, 
+    group = grupo, 
+    color = color
+  )
+) %>% 
+  hc_plotOptions(
+    area = list(
+      dataLabels = list(
+        enabled = TRUE, 
+        format = '{y:.,0f}'
+      )
+    )
+  ) %>%
+  hc_yAxis(title = list(text = "Valores")) %>% 
+  hc_xAxis(title = list(text = "Meses")) %>% 
+  hc_title(text = "Gráfico Exemplo") %>% 
+  hc_colors(as.character(unique(dados$color)))
+
+```
+
+
+```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
+
+kable(dados, align = "c", row.names = FALSE, digits = 3) %>%
+  kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), font_size = 11)
+
+```

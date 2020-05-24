@@ -9,14 +9,17 @@ biblio-style: apalike
 link-citations: yes
 ---
 
-# Início
+# Gráficos
 
-![](img/banner.png)
+![Highcharts - Gráficos em R](img/banner.png)
 
 
 ```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
 library(highcharter)
 library(tidyverse)
+library(shiny)
+
+source("funcoes.R", encoding = "UTF-8")
 
 options(highcharter.theme = hc_theme_smpl())
 
@@ -43,11 +46,10 @@ gen_df <- function(n = 8) {
     )
 } 
 
-
 create_hc <- function(t = "line") {
   
   message(t)
-  
+
   keep_rm_high_and_low <- c("arearange", "areasplinerange", "columnrange", "errorbar")
   
   add_2nd_series <- c("line", "spline", "streamgraph", "column", "scatter", "bubble")
@@ -67,33 +69,23 @@ create_hc <- function(t = "line") {
     df2 <- df2 %>% select(-color)
   }
   
-  
   hc <- highchart() %>%
     hc_title(
       text = paste(ifelse(is_polar, "polar ", ""), t),
       style = list(fontSize = "15px")
-    ) %>% 
+      ) %>% 
     hc_chart(
       type = t,
       polar = is_polar
-    ) %>% 
-    hc_plotOptions(
-      series = list(
-        dataLabels = list(
-          format = "{point.name}",
-          enabled = TRUE,
-          allowOverlap = FALSE
-        )
-      )
-    ) %>% 
+      ) %>% 
     hc_xAxis(
       categories = df1$name
-    ) %>% 
-    hc_add_series(df1, name = "Serie 2")
+      ) %>% 
+    hc_add_series(df1, name = "Grupo 1") 
   
   if(t %in% add_2nd_series) {
     hc <- hc %>% 
-      hc_add_series(df2, name = "Serie 2") %>% 
+      hc_add_series(df2, name = "Grupo 2") %>% 
       hc_plotOptions(series = list(showInLegend = TRUE)) 
     
   } else {
@@ -108,28 +100,151 @@ create_hc <- function(t = "line") {
 df1 <- gen_df()
 df2 <- gen_df()
 
-hcs <- c(
-  # basic
+# Criação dos gráficos -----
+
+fluidPage(
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("line")
+    ),
+    column(
+      width = 6,
+      create_hc("spline")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("area")
+    ),
+    column(
+      width = 6,
+      create_hc("areaspline")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("column")
+    ),
+    column(
+      width = 6,
+      create_hc("columnpyramid")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("bar")
+    ),
+    column(
+      width = 6,
+      create_hc("scatter")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("bubble")
+    ),
+    column(
+      width = 6,
+      create_hc("packedbubble")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("waterfall")
+    ),
+    column(
+      width = 6,
+      create_hc("funnel")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("pyramid")
+    ),
+    column(
+      width = 6,
+      create_hc("pie")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("treemap")
+    ),
+    column(
+      width = 6,
+      create_hc("wordcloud")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("item")
+    ),
+    column(
+      width = 6,
+      create_hc("errorbar")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("columnrange")
+    ),
+    column(
+      width = 6,
+      create_hc("polygon")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("polar")
+    ),
+    column(
+      width = 6,
+      create_hc("polarline")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("polarcolumn")
+    ),
+    column(
+      width = 6,
+      create_hc("polarcolumnrange")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("coloredarea")
+    ),
+    column(
+      width = 6,
+      create_hc("coloredline")
+    )
+  ),
+  fluidRow(
+    column(
+      width = 6,
+      create_hc("streamgraph")
+    ),
+    column(
+      width = 6,
+      create_hc("tilemap")
+    )
+  )
   
-  "line", "spline",  "area", "areaspline",
-   "column", "columnpyramid", "bar", 
-   "scatter", "bubble",
-   "special",
-   "waterfall" , "funnel", "pyramid",
-   "pie" , "treemap", 
-  "packedbubble",
-   "wordcloud", "item",
-   "error",
-   "arearange", "areasplinerange", "columnrange", "errorbar",
-   "polygon",
-  "polar",
-  "polarline", "polarcolumn", "polarcolumnrange",
-  "coloredarea", "coloredline", "streamgraph"
-  )  %>% 
-  map(create_hc) 
+)
 
-highcharter::hw_grid(hcs)
-
-# htmltools::browsable(highcharter::hw_grid(hcs))
 
 ````
