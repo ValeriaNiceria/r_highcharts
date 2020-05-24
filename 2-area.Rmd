@@ -1,6 +1,5 @@
 # Gráficos - Area e AreaSpline
 
-## Gráfico exemplo - Area 
 
 ```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
 
@@ -31,6 +30,8 @@ dados <- rbind(dados_grupo1, dados_grupo2)
 fluidPage(
   fluidRow(
     column = 12,
+    
+    h3(style="font-weight: bold;", "Gráfico exemplo - Area "),
     
     hchart(
       dados, "area", 
@@ -91,14 +92,13 @@ hchart(
 ```
 
 
-
-## Gráfico exemplo - AreaSpline
-
 ```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
 
 fluidPage(
   fluidRow(
     column = 12,
+    
+    h3(style="font-weight: bold;", "Gráfico exemplo - AreaSpline "),
     
     hchart(
       dados, "areaspline", 

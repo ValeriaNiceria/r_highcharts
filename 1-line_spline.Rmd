@@ -1,7 +1,5 @@
 # Gráficos - Line e Spline
 
-## Gráfico exemplo - Line 
-
 ```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
 
 library(tidyverse)
@@ -31,7 +29,9 @@ dados <- rbind(dados_grupo1, dados_grupo2)
 fluidPage(
   fluidRow(
     column = 12,
-
+    
+    h3(style="font-weight: bold;", "Gráfico exemplo - Line "),
+    
     hchart(
       dados, "line", 
       hcaes(
@@ -90,13 +90,13 @@ hc_colors(as.character(unique(dados$color)))
 
 ```
 
-## Gráfico exemplo - Spline
-
 ```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
 
 fluidPage(
   fluidRow(
     column = 12,
+    
+    h3(style="font-weight: bold;", "Gráfico exemplo - Spline "),
     
     hchart(
       dados, "spline", 
