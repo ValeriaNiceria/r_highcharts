@@ -49,7 +49,8 @@ ul.summary {
 .book-header > a.btn[aria-label="Search"],
 .book-header > a.btn[aria-label="Information about the toolbar"],
 .book-header > a.btn[aria-label="Twitter"],
-.book-header > a.btn[aria-label="Facebook"] {
+.book-header > a.btn[aria-label="Facebook"],
+.book-header > a.btn[aria-label="Font Settings"] {
     display: none;
 }
 
