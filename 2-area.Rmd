@@ -1,4 +1,6 @@
-# Gráfico - Area
+# Gráficos - Area e AreaSpline
+
+## Gráfico exemplo - Area 
 
 ```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
 
@@ -49,7 +51,7 @@ fluidPage(
       ) %>%
       hc_yAxis(title = list(text = "Valores")) %>% 
       hc_xAxis(title = list(text = "Meses")) %>% 
-      hc_title(text = "Gráfico Exemplo") %>% 
+      hc_title(text = "Gráfico Exemplo - Area") %>% 
       hc_colors(as.character(unique(dados$color)))
     
   )
@@ -83,7 +85,75 @@ hchart(
   ) %>%
   hc_yAxis(title = list(text = "Valores")) %>% 
   hc_xAxis(title = list(text = "Meses")) %>% 
-  hc_title(text = "Gráfico Exemplo") %>% 
+  hc_title(text = "Gráfico Exemplo - Area") %>% 
+  hc_colors(as.character(unique(dados$color)))
+
+```
+
+
+
+## Gráfico exemplo - AreaSpline
+
+```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
+
+fluidPage(
+  fluidRow(
+    column = 12,
+    
+    hchart(
+      dados, "areaspline", 
+      hcaes(
+        x = as.character(date), 
+        y = value, 
+        group = grupo, 
+        color = color
+      )
+    ) %>% 
+      hc_plotOptions(
+        areaspline = list(
+          dataLabels = list(
+            enabled = TRUE, 
+            format = '{y:.,0f}'
+          )
+        )
+      ) %>%
+      hc_yAxis(title = list(text = "Valores")) %>% 
+      hc_xAxis(title = list(text = "Meses")) %>% 
+      hc_title(text = "Gráfico Exemplo - AreaSpline") %>% 
+      hc_colors(as.character(unique(dados$color)))
+    
+  )
+)
+
+```
+
+```R
+# Carregando os pacotes
+library(tidyverse)
+library(highcharter)
+
+# Criando o gráfico
+hchart(
+  dados,
+  "areaspline",
+  hcaes(
+    x = as.character(date), 
+    y = value, 
+    group = grupo, 
+    color = color
+  )
+) %>% 
+  hc_plotOptions(
+    areaspline = list(
+      dataLabels = list(
+        enabled = TRUE, 
+        format = '{y:.,0f}'
+      )
+    )
+  ) %>%
+  hc_yAxis(title = list(text = "Valores")) %>% 
+  hc_xAxis(title = list(text = "Meses")) %>% 
+  hc_title(text = "Gráfico Exemplo - AreaSpline") %>% 
   hc_colors(as.character(unique(dados$color)))
 
 ```
