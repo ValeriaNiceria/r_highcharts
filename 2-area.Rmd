@@ -165,7 +165,7 @@ fluidPage(
   fluidRow(
     column = 12,
     
-    h3(style="font-weight: bold;", "Gráfico exemplo - AreaSpline Empilhado"),
+    h3(style="font-weight: bold;", "Gráfico exemplo - AreaSpline Stacked"),
     
     hchart(
       dados, "areaspline", 
@@ -187,7 +187,7 @@ fluidPage(
       ) %>%
       hc_yAxis(title = list(text = "Valores")) %>% 
       hc_xAxis(title = list(text = "Meses")) %>% 
-      hc_title(text = "Gráfico Exemplo - AreaSpline Empilhado") %>% 
+      hc_title(text = "Gráfico Exemplo - AreaSpline Stacked") %>% 
       hc_colors(as.character(unique(dados$color))) %>% 
       hc_exporting(enabled = TRUE)
     
@@ -223,7 +223,7 @@ hchart(
   ) %>%
   hc_yAxis(title = list(text = "Valores")) %>% 
   hc_xAxis(title = list(text = "Meses")) %>% 
-  hc_title(text = "Gráfico Exemplo - AreaSpline Empilhado") %>% 
+  hc_title(text = "Gráfico Exemplo - AreaSpline Stacked") %>% 
   hc_colors(as.character(unique(dados$color))) %>% 
   hc_exporting(enabled = TRUE)
 
