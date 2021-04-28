@@ -1,0 +1,64 @@
+# Categorias agrupadas
+
+```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
+
+# Carregar os pacotes -----------------------
+
+library(tidyverse)
+library(highcharter)
+library(shiny)
+
+
+fluidPage(
+  fluidRow(
+    column = 12,
+    
+    h4(style="font-weight: bold;", "Gráfico exemplo - Categorias agrupadas "),
+    
+    highchart() %>%
+      hc_chart(type = "column") %>%
+      hc_title(text = "Total fruit consumtion, grouped by year") %>%
+      hc_yAxis(allowDecimals=FALSE,min=0,title=list(text='Number of fruits'))%>%
+      hc_xAxis(
+        list(categories = c('Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'),opposite='true',labels=list(style=list(color='#FF0000'))),
+        list(categories = c('2014', '2015', '2014', '2015', '2014', '2015','2014', '2015', '2014', '2015'),labels=list(rotation=-90))
+      ) %>%
+      hc_plotOptions(column = list(stacking = "normal")) %>%
+      hc_series(
+        list(name='John',data=c(5, 3, 4, 7, 2),stack='2014',color= '#ff4400'),
+        list(name='Joe',data=c(3, 4, 4, 2, 5),stack='2014',color= '#44ff00'),
+        list(name='John',data=c(2, 5, 6, 2, 1),showInLegend = FALSE,stack='2015',color= '#ff4400'),
+        list(name='Joe',data=c(3, 0, 4, 4, 3),showInLegend = FALSE,stack='2015',color= '#44ff00'),
+        list(name='',data=c(0,0,0,0,0,0,0,0,0,0),stack='2015',showInLegend = FALSE,xAxis=1)
+      )
+ 
+    
+  )
+)
+
+```
+
+```R
+library(tidyverse)
+library(highcharter)
+
+
+ highchart() %>%
+      hc_chart(type = "column") %>%
+      hc_title(text = "Total fruit consumtion, grouped by year") %>%
+      hc_yAxis(allowDecimals=FALSE,min=0,title=list(text='Number of fruits'))%>%
+      hc_xAxis(
+        list(categories = c('Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'),opposite='true',labels=list(style=list(color='#FF0000'))),
+        list(categories = c('2014', '2015', '2014', '2015', '2014', '2015','2014', '2015', '2014', '2015'),labels=list(rotation=-90))
+      ) %>%
+      hc_plotOptions(column = list(stacking = "normal")) %>%
+      hc_series(
+        list(name='John',data=c(5, 3, 4, 7, 2),stack='2014',color= '#ff4400'),
+        list(name='Joe',data=c(3, 4, 4, 2, 5),stack='2014',color= '#44ff00'),
+        list(name='John',data=c(2, 5, 6, 2, 1),showInLegend = FALSE,stack='2015',color= '#ff4400'),
+        list(name='Joe',data=c(3, 0, 4, 4, 3),showInLegend = FALSE,stack='2015',color= '#44ff00'),
+        list(name='',data=c(0,0,0,0,0,0,0,0,0,0),stack='2015',showInLegend = FALSE,xAxis=1)
+      )
+
+```
+

@@ -1,0 +1,3 @@
+gráficos
+categorias-agrupadas
+mapa-de-calor
