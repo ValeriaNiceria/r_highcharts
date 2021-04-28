@@ -1,0 +1,120 @@
+# Coluna preenchida
+
+```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
+
+# Carregar os pacotes -----------------------
+
+library(tidyverse)
+library(highcharter)
+library(shiny)
+library(knitr)
+library(kableExtra)
+
+# Dados --------------------------------
+
+dados_plot <- data.frame(
+  ano = c(2017:2020),
+  valor = c(120, 70, 58, 100),
+  valor1 = c(100, 60, 58, 70)
+)
+
+
+fluidPage(
+  fluidRow(
+    column(
+      width = 12,
+      
+      h4(style="font-weight: bold;", "Gráfico exemplo - Coluna preenchida "),
+      
+      highchart() %>%
+        hc_add_series(
+          data = dados_plot,
+          type = "column",
+          name = "Valor",
+          pointPadding = 0.2,
+          color = 'rgba(136, 145, 194, 1)',
+          hcaes(
+            x = as.character(ano), 
+            y = valor1
+          ),
+          tooltip = list(pointFormat = '<span style="color:{series.color}">\u25CF</span>{series.name}: <b>{point.valor:.,2f}</b><br/>
+      Valor1: <b>{point.valor1:.2f}%</b>
+      ')
+        ) %>% 
+        hc_add_series(
+          data = dados_plot,
+          type = "column",
+          name = "Valor1",
+          pointPadding = 0.4,
+          color = 'rgba(0, 7, 45,.9)',
+          hcaes(
+            x = as.character(ano), 
+            y = valor
+          )
+        ) %>%
+        hc_xAxis(categories = as.character(dados_plot$ano)) %>% 
+        hc_yAxis(title = list(text = "Valor"), lineColor ="#f7f7f7",  gridLineColor="#f4f4f4") %>% 
+        hc_plotOptions(
+          column = list(
+            grouping = FALSE,
+            shadow = FALSE,
+            borderWidth = 0
+          ),
+          line = list(dataLabels = list(enabled = TRUE))
+        )
+    )
+  )
+  
+)
+
+```
+
+```R
+library(tidyverse)
+library(highcharter)
+
+    highchart() %>%
+        hc_add_series(
+          data = dados_plot,
+          type = "column",
+          name = "Valor",
+          pointPadding = 0.2,
+          color = 'rgba(136, 145, 194, 1)',
+          hcaes(
+            x = as.character(ano), 
+            y = valor1
+          ),
+          tooltip = list(pointFormat = '<span style="color:{series.color}">\u25CF</span>{series.name}: <b>{point.valor:.,2f}</b><br/>
+      Valor1: <b>{point.valor1:.2f}%</b>
+      ')
+        ) %>% 
+        hc_add_series(
+          data = dados_plot,
+          type = "column",
+          name = "Valor1",
+          pointPadding = 0.4,
+          color = 'rgba(0, 7, 45,.9)',
+          hcaes(
+            x = as.character(ano), 
+            y = valor
+          )
+        ) %>%
+        hc_xAxis(categories = as.character(dados_plot$ano)) %>% 
+        hc_yAxis(title = list(text = "Valor"), lineColor ="#f7f7f7",  gridLineColor="#f4f4f4") %>% 
+        hc_plotOptions(
+          column = list(
+            grouping = FALSE,
+            shadow = FALSE,
+            borderWidth = 0
+          ),
+          line = list(dataLabels = list(enabled = TRUE))
+        )
+
+
+```
+
+```{r eval=TRUE,  echo=FALSE,cache=FALSE,  comment=FALSE, warning=FALSE,message=FALSE}
+kable(dados_plot, align = "c", row.names = FALSE, digits = 2) %>%
+      kable_styling(bootstrap_options = c("hover", "condensed", "responsive"), font_size = 11) %>% 
+      row_spec(0, background = "#023047", color = "#FFF")
+```
