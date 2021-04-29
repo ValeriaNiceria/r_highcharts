@@ -37,7 +37,7 @@ fluidPage(
             x = as.character(ano), 
             y = valor1
           ),
-          tooltip = list(pointFormat = '<span style="color:{series.color}">\u25CF</span>{series.name}: <b>{point.valor:.,2f}</b>')
+          tooltip = list(pointFormat = '<span style="color:{series.color}">\u25CF</span>{series.name}: <b>{point.valor1:.,2f}</b>')
         ) %>% 
         hc_add_series(
           data = dados_plot,
@@ -82,7 +82,7 @@ library(highcharter)
             x = as.character(ano), 
             y = valor1
           ),
-          tooltip = list(pointFormat = '<span style="color:{series.color}">\u25CF</span>{series.name}: <b>{point.valor:.,2f}</b>')
+          tooltip = list(pointFormat = '<span style="color:{series.color}">\u25CF</span>{series.name}: <b>{point.valor1:.,2f}</b>')
         ) %>% 
         hc_add_series(
           data = dados_plot,
